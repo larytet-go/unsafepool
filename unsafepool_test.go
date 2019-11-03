@@ -55,6 +55,8 @@ func BenchmarkPoolAllocFree(b *testing.B) {
 			}
 		}
 	}
+	b.StopTimer()
+	b.Logf("poolSize=%d, b.N=%d", poolSize, b.N)
 }
 
 // 10ns/allocation - suprisingly expensive
@@ -76,6 +78,8 @@ func BenchmarkPoolAlloc(b *testing.B) {
 		pool.Reset()
 		b.StartTimer()
 	}
+	b.StopTimer()
+	b.Logf("poolSize=%d, b.N=%d", poolSize, b.N)
 }
 
 func BenchmarkPoolAllocFreeSync(b *testing.B) {
@@ -95,6 +99,8 @@ func BenchmarkPoolAllocFreeSync(b *testing.B) {
 			}
 		}
 	}
+	b.StopTimer()
+	b.Logf("poolSize=%d, b.N=%d", poolSize, b.N)
 }
 
 // 10ns/allocation - suprisingly expensive
@@ -116,4 +122,6 @@ func BenchmarkPoolAllocSync(b *testing.B) {
 		pool.Reset()
 		b.StartTimer()
 	}
+	b.StopTimer()
+	b.Logf("poolSize=%d, b.N=%d", poolSize, b.N)
 }
